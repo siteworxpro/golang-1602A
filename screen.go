@@ -48,8 +48,6 @@ const displayCursorBlink = 0x01
 const setPosition = 0x80
 const lineTwoHome = 0x40
 
-var pinMap = map[int]*rpio.Pin{}
-
 func New(config *PinConfig) *Screen {
 	return &Screen{
 		pinConfig: config,
@@ -71,11 +69,17 @@ func (s *Screen) SetCursorPosition(cols uint32, secondLine bool) {
 func (s *Screen) clearPins() {
 	log.Infof("Clearing pins")
 
+	s.pinConfig.D0.Low()
+	s.pinConfig.D1.Low()
+	s.pinConfig.D2.Low()
+	s.pinConfig.D3.Low()
+	s.pinConfig.D4.Low()
+	s.pinConfig.D5.Low()
+	s.pinConfig.D6.Low()
+	s.pinConfig.D7.Low()
+	s.pinConfig.RS.Low()
+	s.pinConfig.RW.Low()
 	s.pinConfig.E.Low()
-
-	for _, pin := range pinMap {
-		pin.Low()
-	}
 }
 
 func (s *Screen) Init() {
