@@ -2,6 +2,8 @@
 
 Connect and display simple logic for a 1602A screen in a raspberry pi.
 
+![screen](docs/screen.jpg "1602A")
+
 define your pinouts currently only 8-bit mode is supported
 ```go
 screen.New(&screen.PinConfig{
@@ -24,7 +26,7 @@ Simple hello world clock
 package main
 
 import (
-	"git.s.int/rrise/raspberry-pi/screen/screen"
+	screen "github.com/siteworxpro/golang-1602A"
 	"github.com/stianeikeland/go-rpio/v4"
 	"time"
 )
