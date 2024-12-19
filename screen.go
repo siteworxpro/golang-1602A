@@ -197,7 +197,6 @@ func (s *Screen) sendBits(bits uint32, writeMode bool) {
 		s.pinConfig.RS.High()
 	}
 	s.pinConfig.RW.Low()
-	log.Infof("Writing command: %s", bin)
 
 	for i, v := range bin {
 
