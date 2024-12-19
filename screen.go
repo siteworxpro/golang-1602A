@@ -197,6 +197,7 @@ func (s *Screen) sendBits(bits uint32, writeMode bool) {
 		s.pinConfig.RS.High()
 	}
 	s.pinConfig.RW.Low()
+	log.Infof("Writing command: %s", bin)
 
 	for i, v := range bin {
 
@@ -204,8 +205,6 @@ func (s *Screen) sendBits(bits uint32, writeMode bool) {
 		if string(v) == "1" {
 			mode = rpio.High
 		}
-
-		log.Infof("Writing command: %s", bin)
 
 		// pins and bits are backwards
 		// d7 d6 d5 d4 d3 d2 d1 d0
